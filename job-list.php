@@ -30,14 +30,15 @@ validate_admin();
 								<div class="page-title">Job List</div>
 							</div>
 							<div class="col-md-6"><p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:12px;color:#ff0b0b;margin-right: -60%;"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p></div>
+							<?php if($_SESSION['user_type']!='recruiter'){?>
 							<ol class="breadcrumb page-breadcrumb pull-right">
 								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
 										href="welcome.php">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
 								</li>
 								<li><a class="parent-item" href="job-addf.php">Add Job</a>&nbsp;<i class="fa fa-plus"></i>
-								</li>
-								
+								</li>								
 							</ol>
+							<?php }?>
 						</div>
 					</div>
 					<div class="row">

@@ -3,6 +3,7 @@ ob_start();
 session_start();
 include('include/config.php');
 include("include/functions.php");
+validate_admin();
 
 if($_POST['submitForm'] == "yes") {
   $old_password=$obj->escapestring($_POST['old_password']);

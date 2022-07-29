@@ -13,7 +13,16 @@
 					<img alt="image" src="assets/img/logo1.png">
 				</div>
 				<div class="sidebar-user-details">
-					<div class="user-role">Administrator</div>
+					<div class="user-role">
+						<?php 
+						if($_SESSION['user_type']=='admin'){?>
+							Administrator
+						<?php }else if($_SESSION['user_type']=='sales'){?>
+							Sales Account
+						<?php }else if($_SESSION['user_type']=='recruiter'){?>
+							Recruiter
+						<?php }?>
+					</div>
 				</div>
 			</div>
 		</li>
@@ -101,8 +110,8 @@
 			</a>
 		</li>
 	<?php }else if($_SESSION['user_type']=='recruiter'){?>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="layout"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='job-list.php' || basename($_SERVER['SCRIPT_NAME'])=='job-addf.php'){?> class="nav-item active" <?php }?>>
+			<a href="job-list.php" class="nav-link nav-toggle"> <i data-feather="layout"></i>
 				<span class="title">Job Board</span>
 			</a>
 		</li>
