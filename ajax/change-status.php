@@ -5,16 +5,18 @@ include("../include/functions.php");
 validate_admin();
   
 
-$id=$_POST['id'];
-$tableName=$_POST['tableName'];  
-$status=$_POST['status'];  
+$id=$_REQUEST['id'];
+$status=$_REQUEST['status'];
+if(!empty($id)){
+    $whr="";
+    if($status==1){
+        $whr = ",status=1";
+    }else if($status==0){
+        $whr = ",status=0";
+    }
+    $obj->query("update $tbl_country set status='$status' where id='$id' ",$debug=-1); //die;
 
- if ($_POST['id']) {
-
-     $sql=" update $tableName set status='$status'";
-     $sql.=" where id='".$id."'";
-     $obj->query($sql);
- }
+}
 
 
 ?>
