@@ -3,8 +3,6 @@ session_start();
 include("include/config.php");
 include("include/functions.php"); 
 
-
-
 if($_REQUEST['submitForm']=='yes')
 {	
 
