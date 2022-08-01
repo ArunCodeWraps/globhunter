@@ -54,6 +54,7 @@ include("include/functions.php");
 												<th>Email</th>
 												<th style="width: 100px">Address</th>
 												<th style="width: 158px"  >Logo</th>
+												<th>Status</th>
 												<th>Edit</th>
 											</tr>
 										</thead>
@@ -73,7 +74,14 @@ include("include/functions.php");
 												<td><?php echo $line->address ?></td>
 												<td><img src="upload_images/company/<?php echo $line->logo ?>" style="height: 10%; width: 56%;"></td>
 												
-												
+													
+												<td>
+													<select name="orderstatus" onchange="clinet_status(<?php echo $line->id; ?>,this.value)">
+													<option value="1" <?php if($line->status==1){?> selected <?php } ?>>Enable</option>
+													<option value="0" <?php if($line->status==0){?> selected <?php } ?>>Disable</option>
+													
+													</select>
+													</td>
 												  <td>
 													<a href="admin-clinet-addf.php?id=<?php echo $line->id;?>" class="tblEditBtn">
 														<i class="fa fa-pencil"></i>
@@ -101,4 +109,17 @@ include("include/functions.php");
 </body>
 <script src="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/pages/table/table_data.js"></script>
+<script>
+    function clinet_status(id,status){
+          $.ajax({
+            url:"ajax/change-status.php",
+            data:{clinetid:id,status:status},
+            beforeSend:function(){
+            },
+            success:function(data){
+                $("#msg").html("Record updated successfully").show().fadeOut('slow');
+           }
+         });
+    }
+    </script>
 </html>
