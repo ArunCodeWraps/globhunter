@@ -2,8 +2,11 @@
 session_start();
 include("include/config.php");
 include("include/functions.php"); 
+<<<<<<< HEAD
 validate_admin();
 
+=======
+>>>>>>> 05d660b223966a0e699f4f3c218d0fcad8833a36
 
 if($_REQUEST['submitForm']=='yes')
 {	
