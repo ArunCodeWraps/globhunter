@@ -52,11 +52,12 @@ validate_admin();
 												<th>#</th>
 												<th>Employee Name</th>
 												<th>Email</th>
-												<th>Phone</th>
+												
 												<th>Employee Type</th>
 												<th>Job Type</th>
 											
 												<th style="width: 80px" >Logo</th>
+												<th>Status</th>
 												<th>Edit</th>
 											</tr>
 										</thead>
@@ -71,11 +72,18 @@ validate_admin();
 														<td><?php echo $i; ?></td>
 												<td><?php echo $line->name; ?></td>
 												<td><?php echo $line->email ?></td>
-												<td><?php echo $line->mobile ?></td>
+											
 												<td><?php echo $line->user_type ?></td>
 												<td><?php echo $line->job_type ?></td>
 												
 												<td><img src="upload_images/user/<?php echo $line->image ?>" style="height: 10%; width: 44%;"></td>
+												<td>
+													<select name="orderstatus" onchange="employe_status(<?php echo $line->id; ?>,this.value)">
+													<option value="1" <?php if($line->status==1){?> selected <?php } ?>>Enable</option>
+													<option value="0" <?php if($line->status==0){?> selected <?php } ?>>Disable</option>
+													
+													</select>
+													</td>
 												
 												
 												  <td>
@@ -108,4 +116,17 @@ validate_admin();
 </body>
 <script src="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/pages/table/table_data.js"></script>
+<script>
+    function employe_status(id,status){
+          $.ajax({
+            url:"ajax/change-status.php",
+            data:{employeid:id,status:status},
+            beforeSend:function(){
+            },
+            success:function(data){
+                $("#msg").html("Record updated successfully").show().fadeOut('slow');
+           }
+         });
+    }
+    </script>
 </html>

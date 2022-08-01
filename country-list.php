@@ -54,7 +54,7 @@ validate_admin();
 										<thead>
 											<tr>
 												<th>#</th>
-												<th style="width: 80%;">Country Name</th>
+												<th style="width: 70%;">Country Name</th>
 												<th>Status</th>
 												<th>Edit</th>
 											</tr>
@@ -69,12 +69,13 @@ validate_admin();
 											<tr class="odd">
 												<td><?php echo $i; ?></td>
 												<td><?php echo $line->country; ?> </td>
-												<td>		
-												<label class="switch">
-												<input type="checkbox" checked>
-												<span class="slider round" style="margin: 3px -2px;min-height: 34px;"></span>
-												</label>
-												</td>
+													<td>
+													<select name="orderstatus" onchange="order_status(<?php echo $line->id; ?>,this.value)">
+													<option value="1" <?php if($line->status==1){?> selected <?php } ?>>Enable</option>
+													<option value="0" <?php if($line->status==0){?> selected <?php } ?>>Disable</option>
+													
+													</select>
+													</td>
 												
 												<td>
 													<a href="country-addf.php?id=<?php echo $line->id;?>" class="tblEditBtn">
@@ -104,4 +105,17 @@ validate_admin();
 </body>
 <script src="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/pages/table/table_data.js"></script>
+<script>
+    function order_status(id,status){
+          $.ajax({
+            url:"ajax/change-status.php",
+            data:{id:id,status:status},
+            beforeSend:function(){
+            },
+            success:function(data){
+                $("#msg").html("Record updated successfully").show().fadeOut('slow');
+           }
+         });
+    }
+    </script>
 </html>

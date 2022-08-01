@@ -51,7 +51,8 @@ validate_admin();
 										<thead>
 											<tr>
 												<th>#</th>
-												<th style="width: 80%;">Language Name</th>
+												<th style="width: 70%;">Language Name</th>
+												<th>Status</th>
 												
 												<th>Edit</th>
 											</tr>
@@ -66,7 +67,13 @@ validate_admin();
 											<tr class="odd">
 												<td><?php echo $i; ?></td>
 												<td><?php echo $line->name; ?> </td>
-												
+												<td>
+													<select name="orderstatus" onchange="language_status(<?php echo $line->id; ?>,this.value)">
+													<option value="1" <?php if($line->status==1){?> selected <?php } ?>>Enable</option>
+													<option value="0" <?php if($line->status==0){?> selected <?php } ?>>Disable</option>
+													
+													</select>
+													</td>
 												<td>
 													<a href="language-addf.php?id=<?php echo $line->id;?>" class="tblEditBtn">
 														<i class="fa fa-pencil"></i>
@@ -95,4 +102,17 @@ validate_admin();
 </body>
 <script src="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/pages/table/table_data.js"></script>
+<script>
+    function language_status(id,status){
+          $.ajax({
+            url:"ajax/change-status.php",
+            data:{langid:id,status:status},
+            beforeSend:function(){
+            },
+            success:function(data){
+                $("#msg").html("Record updated successfully").show().fadeOut('slow');
+           }
+         });
+    }
+    </script>
 </html>
