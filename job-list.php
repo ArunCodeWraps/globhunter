@@ -118,7 +118,7 @@ validate_admin();
 															<i class="fa fa-trash-o"></i>
 														</a><br><br>
 													<?php }else{?>
-														<a href="jobapply-list.php?id=<?php echo $line->id;?>" title="Manage Job Application" class="tblDelBtn">
+														<a href="jobapply-list.php?jid=<?php echo $line->id;?>" title="Manage Job Application" class="tblDelBtn">
 															<i class="fa fa-plus-square-o"></i>
 														</a>
 													<?php }?>
