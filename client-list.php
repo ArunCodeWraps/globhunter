@@ -54,9 +54,9 @@ validate_admin();
 												<th>Phone</th>
 												<th>Email</th>
 												<th style="width: 100px">Address</th>
-												<th  >Logo</th>
+												<th width="60px;">Logo</th>
 												<th>Status</th>
-												<th>Edit</th>
+												<th width="60px;">Action</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -76,7 +76,7 @@ validate_admin();
 												<td><?php echo $line->contact ?></td>
 												<td><?php echo $line->email ?></td>
 												<td><?php echo $line->address ?></td>
-												<td><img src="upload_images/company/<?php echo $line->logo ?>" style="height: 10%; width: 60%;"></td>
+												<td><img src="upload_images/company/<?php echo $line->logo ?>" style="height: 10%; width: 90%;"></td>
 												
 												<td>
 													<select name="orderstatus" onchange="order_status('tbl_company',<?php echo $line->id; ?>,this.value)">

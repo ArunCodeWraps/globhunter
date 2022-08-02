@@ -82,7 +82,7 @@ if($_SESSION['sess_admin_id']!='')
 					<div class="page-bar">
 						<div class="page-title-breadcrumb">
 							<div class=" pull-left">
-								<div class="page-title">Profile Add</div>
+								<div class="page-title">My Profile</div>
 							</div>
 							<div class="col-md-6"><p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:12px;color:#ff0b0b;margin-right: -60%;"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p></div>
 							<ol class="breadcrumb page-breadcrumb pull-right">

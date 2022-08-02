@@ -94,8 +94,8 @@
 				<span class="title">Job Board</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="gift"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='profile.php'){?> class="nav-item active" <?php }?>>
+			<a href="profile.php" class="nav-link nav-toggle"> <i data-feather="gift"></i>
 				<span class="title">My profile</span>
 			</a>
 		</li>
