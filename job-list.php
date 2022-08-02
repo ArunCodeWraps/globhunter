@@ -52,12 +52,12 @@ validate_admin();
 											<tr>
 												<th>#</th>
 												<?php if($_SESSION['user_type']=='admin'){?>
-													<th>Posted By</th>
+													<th>POSTED BY</th>
 												<?php }?>
-												<th>Company</th>
-												<th>Position</th>
-												<th>EST Reward</th>
-												<th>Salary</th>
+												<th>COMPANY</th>
+												<th>POSITION</th>
+												<th>EST REWARD</th>
+												<th>SALARY</th>
 												<th>Processing</th>
 												<th>Job Status</th>
 												<th>Action</th>
@@ -81,9 +81,20 @@ validate_admin();
 												<?php if($_SESSION['user_type']=='admin'){?>
 													<td><?php echo getField('name',$tbl_users,$line->sales_id); ?></td>
 												<?php }?>
-												<td><?php echo getField('name',$tbl_company,$line->company_id); ?></td>
-												<td><?php echo $line->position ?></td>
-												<td><?php echo $line->salary ?></td>
+												<td>
+													    <?php 
+														$clogo= getField('logo',$tbl_company,$line->company_id);
+														if (empty($clogo)) {
+															$clogo='';
+														}  ?>
+														<a href="job-detail.php?id=<?php echo $line->id ?>" class="job-list-img"><img src="upload_images/company/<?php echo $clogo ?>"></a>
+												</td>
+												<td class="company-coloumn">
+													<strong><?php echo $line->position ?></strong><br>
+													<?php echo getField('name',$tbl_company,$line->company_id); ?>	<p><i class="material-icons f-left">place</i><?php echo $line->job_location; ?></p>
+													</td>
+												<td>
+													<span class="label label-sm label-success"><?php echo number_format($line->salary) ?> USD</span></td>
 												<td><?php echo $line->salary ?></td>
 												<td><?php echo "0 CV" ?></td>
 												<td>

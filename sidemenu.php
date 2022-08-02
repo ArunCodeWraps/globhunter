@@ -28,7 +28,7 @@
 		</li>
 		<?php 
 		if($_SESSION['user_type']=='admin'){?>
-		<li class="nav-item start active open">
+		<li class="nav-item start">
 			<a href="#" class="nav-link nav-toggle">
 				<i data-feather="airplay"></i>
 				<span class="title">Master</span>

@@ -23,6 +23,6 @@
 <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/theme/light/theme-color.css" rel="stylesheet" type="text/css" />
 <!-- favicon -->
-<link rel="shortcut icon" href="https://www.einfosoft.com/templates/admin/smart/source/assets/img/favicon.ico" />
+<link rel="shortcut icon" href="assets/img/favicon.png" />
 <link href="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.css" rel="stylesheet"
 		type="text/css" />

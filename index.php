@@ -19,7 +19,7 @@ include("include/functions.php");
 	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/theme/light/theme_style.css" rel="stylesheet" id="rt_style_components" type="text/css" />
 	<link rel="stylesheet" href="assets/css/pages/login.css">
-	<link rel="shortcut icon" href="https://www.einfosoft.com/templates/admin/smart/source/assets/img/favicon.ico" />
+	<link rel="shortcut icon" href="assets/img/favicon.png" />
 </head>
 <body>
 <div class="main">
@@ -27,10 +27,10 @@ include("include/functions.php");
 	<div class="container">
 		<div class="signin-content">
 			<div class="signin-image">
-				<figure><img src="assets/img/pages/signin.jpg" alt="sing up image"></figure>
+				<figure><img src="assets/img/logo1.png" alt="sing up image"></figure>
 			</div>
 			<div class="signin-form">
-				<h2 class="form-title">Login</h2>
+				<h2 class="form-title">Administrator Login</h2>
 				<p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:14px;color:#e50e0a"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p>
 				<form name="loginform" id="loginform" method="post" action="login.php">
 					<input type="hidden" name="logged" value="yes" />
