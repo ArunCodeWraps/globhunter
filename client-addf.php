@@ -99,7 +99,7 @@ if($_REQUEST['id']!='')
 								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
 										href="welcome.php">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
 								</li>
-								<li><a class="parent-item" href="client-list.php">Clinet List</a>&nbsp;<i class="fa fa-list"></i>
+								<li><a class="parent-item" href="client-list.php">Client List</a>&nbsp;<i class="fa fa-list"></i>
 								</li>
 							</ol>
 						</div>
@@ -120,53 +120,50 @@ if($_REQUEST['id']!='')
 							<input type="hidden" name="submitForm" value="yes" />
 							<input type="hidden" name="id" value="<?php echo $_REQUEST['id'];?>" />	
 								<div class="card-body row">
-									<div class="col-lg-6 p-t-20">
-										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="name" name="name" value="<?php echo $result->name ?>" required>
-											<label class="mdl-textfield__label"> Name</label>
+									<div class="col-lg-4 p-t-20">
+										<div class="form-group">
+											<label class="simpleFormEmail"> Name</label>
+											<input class="form-control" type="text" id="name" name="name" value="<?php echo $result->name ?>" required>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
-										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="website" name="website" value="<?php echo $result->website ?>" required>
-											<label class="mdl-textfield__label">Website</label>
+									<div class="col-lg-4 p-t-20">
+										<div class="form-group">
+											<label class="simpleFormEmail">Website</label>
+											<input class="form-control" type="text" id="website" name="website" value="<?php echo $result->website ?>" required>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
-										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="taxid" name="taxid" value="<?php echo $result->taxid ?>" required>
-											<label class="mdl-textfield__label">Tax ID </label>
+									<div class="col-lg-4 p-t-20">
+										<div class="form-group">
+											<label class="simpleFormEmail">Tax ID </label>
+											<input class="form-control" type="text" id="taxid" name="taxid" value="<?php echo $result->taxid ?>" required>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-4 p-t-20">
 										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="position" name="position" value="<?php echo $result->position ?>" required>
-											<label class="mdl-textfield__label">Position</label>
+											class="form-group">
+											<label class="simpleFormEmail">Position</label>
+											<input class="form-control" type="text" id="position" name="position" value="<?php echo $result->position ?>" required>
 										</div>
 									</div>
-										<div class="col-lg-6 p-t-20">
+										<div class="col-lg-4 p-t-20">
 										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="fee" name="fee" value="<?php echo $result->fee ?>" required>
-											<label class="mdl-textfield__label">Fee</label>
+											class="form-group">
+											<label class="simpleFormEmail">Fee</label>
+											<input class="form-control" type="text" id="fee" name="fee" value="<?php echo $result->fee ?>" required>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-4 p-t-20">
 										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="text" id="payment" name="payment" value="<?php echo $result->payment ?>" required>
-											<label class="mdl-textfield__label">Payment infor</label>
+											class="form-group">
+											<label class="simpleFormEmail">Payment info</label>
+											<input class="form-control" type="text" id="payment" name="payment" value="<?php echo $result->payment ?>" required>
 										</div>
 									</div>
-												<div class="col-lg-6 p-t-20">
+												<div class="col-lg-4 p-t-20">
 									<div
-									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-									<label for="list2" class="mdl-textfield__label">Industry</label>
-									<select class="mdl-textfield__input"  name="employe_type"  id="employe_type" >
+									class="form-group">
+									<label for="simpleFormEmail" class="simpleFormEmail">Industry</label>
+									<select class="form-control"  name="employe_type"  id="employe_type" >
 							
 									<option value="sales"<?php if($result->user_type=="sales"){?> selected <?php }?>>Aerospace  </option>
 									<option value="Transport"<?php if($result->user_type=="Transport"){?> selected <?php }?>>Transport </option>
@@ -179,25 +176,23 @@ if($_REQUEST['id']!='')
 									</div>
 									</div>
 									
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-4 p-t-20">
 										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="email" id="email" name="email" value="<?php echo $result->email ?>"required>
-											<label class="mdl-textfield__label"> Email</label>
-											<span class="mdl-textfield__error">Enter Valid Email Address!</span>
+											class="form-group">
+											<label class="simpleFormEmail"> Email</label>
+											<input class="form-control" type="email" id="email" name="email" value="<?php echo $result->email ?>"required>
 										</div>
 									</div>
 							
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-4 p-t-20">
 										<div
-											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="text"
+											class="form-group">
+											<label class="simpleFormEmail" for="text5">Mobile Number</label>
+											<input class="form-control" type="text"
 												pattern="-?[0-9]*(\.[0-9]+)?" id="contact" name="contact" value="<?php echo $result->contact ?>"required>
-											<label class="mdl-textfield__label" for="text5">Mobile Number</label>
-											<span class="mdl-textfield__error">Number required!</span>
 										</div>
 									</div>
-												  <div class="col-md-6">
+					<div class="col-md-4 p-t-20">
             		<div class="form-group">
 						<label>Image</label>
 						<input type="hidden" name="imagename" value="<?php echo $result->logo; ?>" >
@@ -207,16 +202,16 @@ if($_REQUEST['id']!='')
 				  </div>
             </div>
 									
-									<div class="col-lg-6 p-t-20">
-										<div class="mdl-textfield mdl-js-textfield txt-full-width">
-											<textarea class="mdl-textfield__input" rows="4" id="address" name="address" value=""required><?php echo $result->address ?></textarea>
-											<label class="mdl-textfield__label" for="text7">Address</label>
+									<div class="col-lg-4 p-t-20">
+										<div class="form-group">
+											<label class="simpleFormEmail" for="text7">Address</label>
+											<textarea class="form-control" rows="4" id="address" name="address" value=""required><?php echo $result->address ?></textarea>
 										</div>
 									</div>
-										<div class="col-lg-6 p-t-20">
-										<div class="mdl-textfield mdl-js-textfield txt-full-width">
-											<textarea class="mdl-textfield__input" rows="4" id="note" name="note" value=""required><?php echo $result->note ?></textarea>
-											<label class="mdl-textfield__label" for="text7">Note box</label>
+										<div class="col-lg-4 p-t-20">
+										<div class="form-group">
+											<label class="simpleFormEmail" for="text7">Note box</label>
+											<textarea class="form-control" rows="4" id="note" name="note" value=""required><?php echo $result->note ?></textarea>
 										</div>
 									</div>
 							<!-- 	<div class="col-lg-12 p-t-20">

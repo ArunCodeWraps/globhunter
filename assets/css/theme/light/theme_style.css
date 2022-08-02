@@ -9500,3 +9500,7 @@ input:checked + .slider:before {
     color: #fff;
     font-size: 14px;
 }
+
+.urjent-img{
+  width: 60px;
+}
