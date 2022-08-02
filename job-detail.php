@@ -110,23 +110,27 @@ if (empty($jResult)) {
 												<div class="tab-pane active fontawesome-demo">
 													<div id="biography">
 														<div class="row">
-															<div class="col-md-3 col-6 b-r"> <strong>Full Name</strong>
+															<div class="col-md-10 col-6 b-r"> 
+																<strong><?php echo $jResult->job_title ?></strong>
 																<br>
-																<p class="text-muted">Celena Anderson </p>
+																<p class="text-muted"><i class="fa fa-building-o"></i> <?php echo getField('name','tbl_company',$jResult->company_id); ?> </p>
+
+																<p class="text-muted"><i class="fa fa-map-marker"></i> <?php echo $jResult->job_location ?> </p>
+
+																<div class="row">
+																	<div class="col-md-4">JD Code : <?php echo $jResult->job_code ?></div>
+																	<div class="col-md-4"><i class="fa fa-eye"></i> <?php echo totalJobView($jResult->id) ?> View</div>
+																	<div class="col-md-4"><i class="fa fa-user-o"></i> <?php echo totalJobApply($jResult->id) ?> CV Processing</div>
+																</div>
 															</div>
-															<div class="col-md-3 col-6 b-r"> <strong>Mobile</strong>
-																<br>
-																<p class="text-muted">(123) 456 7890</p>
-															</div>
-															<div class="col-md-3 col-6 b-r"> <strong>Email</strong>
-																<br>
-																<p class="text-muted">test@example.com</p>
-															</div>
-															<div class="col-md-3 col-6"> <strong>Location</strong>
-																<br>
-																<p class="text-muted">India</p>
+															
+															<div class="col-md-2 col-6">
+																<p class="text-muted">Salary</p>
+															  <span class="label label-sm label-success"><?php echo number_format($jResult->salary) ?> USD</span> 
+																
 															</div>
 														</div>
+														<hr>
 														<h4 class="font-bold">Employment Information</h4>
 														<?php echo $jResult->job_description ?>
 													</div>

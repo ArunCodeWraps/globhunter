@@ -542,4 +542,28 @@ function totalExpence($year)
     }
 }
 
+
+function totalJobApply($jobid)
+{
+    $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_job_application as a where 1=1 and job_id='$jobid'",-1);
+    $result = mysqli_fetch_assoc($sql);
+    if ($result['total']) {
+       return (stripslashes($result['total']));
+    } else {
+       return 0;
+    }
+}
+
+
+function totalJobView($jobid)
+{
+    $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_job_view as a where 1=1 and job_id='$jobid'",-1);
+    $result = mysqli_fetch_assoc($sql);
+    if ($result['total']) {
+       return (stripslashes($result['total']));
+    } else {
+       return 0;
+    }
+}
+
 ?>

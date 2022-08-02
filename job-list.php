@@ -96,7 +96,7 @@ validate_admin();
 												<td>
 													<span class="label label-sm label-success"><?php echo number_format($line->salary) ?> USD</span></td>
 												<td><?php echo $line->salary ?></td>
-												<td><?php echo "0 CV" ?></td>
+												<td><?php echo totalJobApply($line->id) ?> CV</td>
 												<td>
 												 	<select name="jobstatus" onchange="job_status(<?php echo $line->id; ?>,this.value)" style="width: 85px;" <?php if($_SESSION['user_type']!='admin'){?> disabled="disabled" <?php }?>>
 													<option value="1" <?php if($line->job_status==1){?> selected <?php } ?>>Open</option>
