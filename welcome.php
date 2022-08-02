@@ -342,7 +342,7 @@ validate_admin();
 										}else if($_SESSION['user_type']=='sales'){
 											$sql=$obj->query("select * from $tbl_jobs where sales_id='".$_SESSION['sess_admin_id']."' order by id desc",$debug=-1);
 										}else if($_SESSION['user_type']=='recruiter'){
-											$sql=$obj->query("select * from $tbl_jobs where job_status not in (1) order by id desc",$debug=-1);
+											$sql=$obj->query("select * from $tbl_jobs where job_status not in (4) order by id desc",$debug=-1);
 										}
 									
 										
