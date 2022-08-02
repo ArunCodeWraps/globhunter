@@ -34,7 +34,7 @@ validate_admin();
 								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
 										href="welcome.php">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
 								</li>
-								<li><a class="parent-item" href="client-addf.php">Add Clinet</a>&nbsp;<i class="fa fa-plus"></i>
+								<li><a class="parent-item" href="client-addf.php">Add Client</a>&nbsp;<i class="fa fa-plus"></i>
 								</li>
 								
 							</ol>

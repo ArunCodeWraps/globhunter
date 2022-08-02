@@ -21,3 +21,4 @@
 <script src="assets/js/pages/sparkline/sparkline-data.js"></script>
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/js/jquery.validate.min.js"></script>
+<script src="assets/js/pages/validation/form-validation.js"></script>
