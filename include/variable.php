@@ -8,6 +8,7 @@ $tbl_language='tbl_language';
 $tbl_roles='tbl_roles';
 $tbl_roles_permission='tbl_roles_permission';
 $tbl_users='tbl_users';
+$tbl_setting='tbl_setting';
 
 ini_set("date.timezone","Asia/Calcutta");
 ?>

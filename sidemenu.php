@@ -53,12 +53,12 @@
 				<span class="title">Job Board</span>
 			</a>
 		</li>
-		<li class="nav-item">
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='clinet-list.php' || basename($_SERVER['SCRIPT_NAME'])=='clinet-addf.php'){?> class="nav-item active" <?php }?>>
 			<a href="clinet-list.php" class="nav-link nav-toggle"> <i data-feather="users"></i>
 				<span class="title">All Client</span>
 			</a>
 		</li>
-		<li class="nav-item">
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='admin-clinet-list.php'){?> class="nav-item active" <?php }?>>
 			<a href="admin-clinet-list.php" class="nav-link nav-toggle"> <i data-feather="user"></i>
 				<span class="title">My Client</span>
 			</a>
@@ -68,13 +68,13 @@
 				<span class="title">Referral History</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='terms-addf.php'){?> class="nav-item active" <?php }?> >
+			<a href="terms-addf.php" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
 				<span class="title">Terms</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="layers"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='materials-addf.php'){?> class="nav-item active" <?php }?>>
+			<a href="materials-addf.php" class="nav-link nav-toggle"> <i data-feather="layers"></i>
 				<span class="title">Materials</span>
 			</a>
 		</li>
@@ -99,13 +99,13 @@
 				<span class="title">My profile</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='terms-view.php'){?> class="nav-item active" <?php }?>>
+			<a href="terms-view.php" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
 				<span class="title">Terms</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="layers"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='materials-view.php'){?> class="nav-item active" <?php }?>>
+			<a href="materials-view.php" class="nav-link nav-toggle"> <i data-feather="layers"></i>
 				<span class="title">Materials</span>
 			</a>
 		</li>
@@ -125,13 +125,13 @@
 				<span class="title">My Referral History</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='terms-view.php'){?> class="nav-item active" <?php }?>>
+			<a href="terms-view.php" class="nav-link nav-toggle"> <i data-feather="briefcase"></i>
 				<span class="title">Terms</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="layers"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='materials-view.php'){?> class="nav-item active" <?php }?>>
+			<a href="materials-view.php" class="nav-link nav-toggle"> <i data-feather="layers"></i>
 				<span class="title">Materials</span>
 			</a>
 		</li>
