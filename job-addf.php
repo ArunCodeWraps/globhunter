@@ -178,7 +178,7 @@ if($_REQUEST['id']!='')
 										</div>
 									</div> -->
 						
-									
+										
 									<div class="col-lg-12 p-t-20 text-center">
 										<button type="submit"
 											class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-circle btn-primary">Submit</button>
@@ -187,6 +187,7 @@ if($_REQUEST['id']!='')
 									</div>
 								</div>
 							</form>
+
 							</div>
 						</div>
 					</div>
@@ -199,9 +200,7 @@ if($_REQUEST['id']!='')
 			<?php include("footer.php"); ?>
 		</div>
 	</div>
-	<!-- dropzone -->
 
-	<!-- end js include path -->
 </body>
 	<script src="assets/plugins/dropzone/dropzone.js"></script>
 	<script src="assets/plugins/dropzone/dropzone-call.js"></script>

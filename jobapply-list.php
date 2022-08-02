@@ -27,15 +27,17 @@ validate_admin();
 					<div class="page-bar">
 						<div class="page-title-breadcrumb">
 							<div class=" pull-left">
-								<div class="page-title">Job List</div>
+								<div class="page-title">Job Apply List</div>
 							</div>
 							<div class="col-md-6" id="msg"><p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:12px;color:#ff0b0b;margin-right: -60%;"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p></div>
-							<?php if($_SESSION['user_type']!='recruiter'){?>
+							<?php if($_SESSION['user_type']=='recruiter'){?>
 							<ol class="breadcrumb page-breadcrumb pull-right">
 								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
 										href="welcome.php">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
 								</li>
-								<li><a class="parent-item" href="job-addf.php">Add Job</a>&nbsp;<i class="fa fa-plus"></i>
+								<li><a class="parent-item"
+										href="job-list.php">Back Job List</a>&nbsp;<i class="fa fa-angle-right"></i></li>
+								<li><a class="parent-item" href="jobapply-addf.php?jid=<?php echo $_REQUEST['jid']; ?>">Add Apply Job</a>&nbsp;<i class="fa fa-plus"></i>
 								</li>								
 							</ol>
 							<?php }?>
@@ -59,7 +61,6 @@ validate_admin();
 												<th>EST Reward</th>
 												<th>Salary</th>
 												<th>Processing</th>
-												<th>Job Status</th>
 												<th>Action</th>
 											</tr>
 										</thead>
@@ -86,37 +87,13 @@ validate_admin();
 												<td><?php echo $line->salary ?></td>
 												<td><?php echo $line->salary ?></td>
 												<td><?php echo "0 CV" ?></td>
-												<td>
-												 	<select name="jobstatus" onchange="job_status(<?php echo $line->id; ?>,this.value)" style="width: 85px;" <?php if($_SESSION['user_type']!='admin'){?> disabled="disabled" <?php }?>>
-													<option value="1" <?php if($line->job_status==1){?> selected <?php } ?>>Open</option>
-													<option value="2" <?php if($line->job_status==2){?> selected <?php } ?>>Processing</option>
-													<option value="3" <?php if($line->job_status==3){?> selected <?php } ?>>Closed</option>
-													<option value="4" <?php if($line->job_status==4){?> selected <?php } ?>>Hiden</option>
-													
-													</select>
-
-												 </td>
-												
 												  <td>
-												  	<?php 
-												  	if($_SESSION['user_type']!='recruiter'){?>
-														<a href="job-addf.php?id=<?php echo $line->id;?>" class="tblEditBtn">
-															<i class="fa fa-pencil"></i>
-														</a>
-														<a href="job-del.php?id=<?php echo $line->id;?>" title="deletel" class="tblDelBtn">
-															<i class="fa fa-trash-o"></i>
-														</a><br><br>
-													<?php }else{?>
-														<a href="jobapply-list.php?id=<?php echo $line->id;?>" title="Add Job CV" class="tblDelBtn">
-															<i class="fa fa-plus-square-o"></i>
-														</a>
-													<?php }?>
-													<?php
-													if($line->job_status==1){?>
-													<a href="javascript:void(0);" title="deletel" class="tblDelBtn jobpostcommitionadd" data-bs-toggle="modal" data-bs-target="#CommitionModal" data-one="<?php echo $line->id; ?>">
-														<span class="label label-info label-mini">Post</span>
+													<a href="jobapply-addf.php?id=<?php echo $line->id;?>" class="tblEditBtn">
+													<i class="fa fa-pencil"></i>
 													</a>
-													<?php }?>
+													<a href="jobapply-del.php?id=<?php echo $line->id;?>" title="deletel" class="tblDelBtn">
+													<i class="fa fa-trash-o"></i>
+													</a>
 												</td>
 											</tr>
 										   <?php $i++; } ?>										

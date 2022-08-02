@@ -7,6 +7,7 @@ $clinetId=$_REQUEST['clinetid'];
 $employeId=$_REQUEST['employeid'];
 $langId=$_REQUEST['langid'];
 $id=$_REQUEST['id'];
+$jid=$_REQUEST['jid'];  
 $status=$_REQUEST['status'];
 if(!empty($id)){
     $whr="";
@@ -49,5 +50,9 @@ if(!empty($clinetId)){
 
 }
 
+if(!empty($jid)){
 
+    $obj->query("update $tbl_jobs set job_status='$status' where id='$jid' ",$debug=-1); //die;
+
+}
 ?>
