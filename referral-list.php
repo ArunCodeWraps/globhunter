@@ -59,13 +59,13 @@ validate_admin();
 										<tbody>
 										<?php
 										$i=1;
-										$sql=$obj->query("select a.candidate_name,a.candidate_email,a.candidate_phone from $tbl_job_application as a join $tbl_jobs as b on a.job_id=b.id where 1=1",$debug=-1);
+										$sql=$obj->query("select a.candidate_name,a.candidate_email,a.candidate_phone from $tbl_job_application as a join $tbl_jobs as b on a.job_id=b.id join $tbl_company as c on b.company_id=c.id  where 1=1",$debug=-1);
 										while($line=$obj->fetchNextObject($sql)){?>
 											<tr class="odd">
 												<td><?php echo $i; ?></td>
-												<td><?php echo $line->candidate_name ?></td>
+												<td><?php echo  ?></td>
 												<td><?php echo $line->candidate_email ?></td>
-												<td><?php echo $line->candidate_phone ?></td>
+												<td><?php echo $line->candidate_name.$line->candidate_phone ?></td>
 												
 												<td>
 												<select name="jobstatus" onchange="job_status('tbl_job_application',<?php echo $line->id; ?>,this.value)" style="width: 140px;">

@@ -8848,7 +8848,7 @@ nav-tabs > li {
   border-radius: 100%;
 }
 .info-box-icon.push-bottom {
-  margin-top: 20px;
+  margin-top: 7px;
 }
 .info-box-icon > img {
   max-width: 100%;
@@ -8868,7 +8868,7 @@ nav-tabs > li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: 400;
+  font-weight: 600;
 }
 .info-box-title {
   font-weight: 600;

@@ -35,165 +35,52 @@ validate_admin();
 						</div>
 					</div>
 					<!-- start widget -->
-					<div class="row ">
-						<div class="col-xl-3 col-lg-6">
-							<div class="card comp-card">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col">
-											<div class="col mt-0">
-												<h4 class="info-box-title">Total Client</h4>
-											</div>
-											<h3 class="mt-1 mb-3 info-box-title col-green">589</h3>
-											<div class="progress">
-												<div class="progress-bar l-bg-red" style="width: 45%"></div>
-											</div>
-										</div>
-										<div class="col-auto">
-											<div id="sparkline15"><canvas
-													style="display: inline-block; width: 200px; height: 44px; vertical-align: top;"></canvas>
-											</div>
-										</div>
+
+					<?php if($_SESSION['user_type']=='admin'){ ?>
+
+					<div class="row state-overview">
+						<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="target"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Jobs</span>
+										<span class="info-box-number"><?php echo totalJobs(); ?></span>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-xl-3 col-lg-6">
-							<div class="card comp-card">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col">
-											<div class="col mt-0">
-												<h4 class="info-box-title">Total Client</h4>
-											</div>
-											<h3 class="mt-1 mb-3 info-box-title col-green">589</h3>
-											<div class="progress">
-												<div class="progress-bar l-bg-red" style="width: 45%"></div>
-											</div>
-										</div>
-										<div class="col-auto">
-											<div id="sparkline12"><canvas
-													style="display: inline-block; width: 367px; height: 70px; vertical-align: top;"></canvas>
-											</div>
-										</div>
+
+							<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Clients</span>
+										<span class="info-box-number"><?php echo totalClient(); ?></span>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-xl-3 col-lg-6">
-							<div class="card comp-card">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col">
-											<div class="col mt-0">
-												<h4 class="info-box-title">Total Job</h4>
-											</div>
-											<h3 class="mt-1 mb-3 info-box-title col-green">48</h3>
-											<div class="progress">
-												<div class="progress-bar l-bg-green" style="width: 45%"></div>
-											</div>
-										</div>
-										<div class="col-auto">
-											<div id="sparkline9"><canvas
-													style="display: inline-block; width: 167px; height: 70px; vertical-align: top;"></canvas>
-											</div>
-										</div>
+
+
+							<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="gift"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Referral</span>
+										<span class="info-box-number"><?php echo totalReferral(); ?></span>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-xl-3 col-lg-6">
-							<div class="card comp-card">
-								<div class="card-body">
-									<div class="row align-items-center">
-										<div class="col">
-											<div class="col mt-0">
-												<h4 class="info-box-title">Visitors</h4>
-											</div>
-											<h3 class="mt-1 mb-3 info-box-title col-green">2,479</h3>
-											<div class="progress">
-												<div class="progress-bar l-bg-orange" style="width: 45%"></div>
-											</div>
-										</div>
-										<div class="col-auto">
-											<div id="sparkline16" class="text-center"><canvas
-													style="display: inline-block; width: 215px; height: 70px; vertical-align: top;"></canvas>
-											</div>
-										</div>
+
+							<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="smile"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Employee</span>
+										<span class="info-box-number"><?php echo totalEmployee(); ?></span>
 									</div>
 								</div>
 							</div>
-						</div>
 					</div>
 					<!-- end widget -->
-					<!-- chart start -->
-					<div class="row">
-						<div class="col-12 col-sm-12 col-lg-6">
-							<div class="card">
-								<div class="card-head">
-									<header>Chart</header>
-								</div>
-								<div class="card-body">
-									<div id="chart2"></div>
-									<div class="row">
-										<div class="col-4">
-											<p class="text-muted font-15 text-truncate">Target</p>
-											<h5>
-												<i class="fa fa-arrow-circle-up col-green ms-1 me-1"></i>$15.3k
-											</h5>
-										</div>
-										<div class="col-4">
-											<p class="text-muted font-15 text-truncate">Last
-												week</p>
-											<h5>
-												<i class="fa fa-arrow-circle-down col-red ms-1 me-1"></i>$2.8k
-											</h5>
-										</div>
-										<div class="col-4">
-											<p class="text-muted text-truncate">Last
-												Month</p>
-											<h5>
-												<i class="fa fa-arrow-circle-up col-green ms-1 me-1"></i>$12.5k
-											</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-6">
-							<div class="card">
-								<div class="card-head">
-									<header>Chart</header>
-								</div>
-								<div class="card-body">
-									<div id="schart3"></div>
-									<div class="row">
-										<div class="col-4">
-											<p class="text-muted font-15 text-truncate">Target</p>
-											<h5>
-												<i class="fa fa-arrow-circle-up col-green ms-1 me-1"></i>$15.3k
-											</h5>
-										</div>
-										<div class="col-4">
-											<p class="text-muted font-15 text-truncate">Last
-												week</p>
-											<h5>
-												<i class="fa fa-arrow-circle-down col-red ms-1 me-1"></i>$2.8k
-											</h5>
-										</div>
-										<div class="col-4">
-											<p class="text-muted text-truncate">Last
-												Month</p>
-											<h5>
-												<i class="fa fa-arrow-circle-up col-green ms-1 me-1"></i>$12.5k
-											</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-	
 					<!-- start new student list -->
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
@@ -211,161 +98,67 @@ validate_admin();
 										<div class="table-responsive">
 											<table class="table display product-overview mb-30">
 												<thead>
-													<tr>
-														<th>No</th>
-														<th>Name</th>
-														<th>Assigned Professor</th>
-														<th>Date Of Admit</th>
-														<th>Fees</th>
-														<th>Branch</th>
-														<th>Edit</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>Jens Brincker</td>
-														<td>Kenny Josh</td>
-														<td>27/05/2016</td>
-														<td>
-															<span class="label label-sm label-success">paid</span>
-														</td>
-														<td>Mechanical</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
-													<tr>
-														<td>2</td>
-														<td>Mark Hay</td>
-														<td> Mark</td>
-														<td>26/05/2017</td>
-														<td>
-															<span class="label label-sm label-warning">unpaid </span>
-														</td>
-														<td>Science</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
-													<tr>
-														<td>3</td>
-														<td>Anthony Davie</td>
-														<td>Cinnabar</td>
-														<td>21/05/2016</td>
-														<td>
-															<span class="label label-sm label-success ">paid</span>
-														</td>
-														<td>Commerce</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
-													<tr>
-														<td>4</td>
-														<td>David Perry</td>
-														<td>Felix </td>
-														<td>20/04/2016</td>
-														<td>
-															<span class="label label-sm label-danger">unpaid</span>
-														</td>
-														<td>Mechanical</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
-													<tr>
-														<td>5</td>
-														<td>Anthony Davie</td>
-														<td>Beryl</td>
-														<td>24/05/2016</td>
-														<td>
-															<span class="label label-sm label-success ">paid</span>
-														</td>
-														<td>M.B.A.</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
-													<tr>
-														<td>6</td>
-														<td>Alan Gilchrist</td>
-														<td>Joshep</td>
-														<td>22/05/2016</td>
-														<td>
-															<span class="label label-sm label-warning ">unpaid</span>
-														</td>
-														<td>Science</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
-													<tr>
-														<td>7</td>
-														<td>Mark Hay</td>
-														<td>Jayesh</td>
-														<td>18/06/2016</td>
-														<td>
-															<span class="label label-sm label-success ">paid</span>
-														</td>
-														<td>Commerce</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
-													<tr>
-														<td>8</td>
-														<td>Sue Woodger</td>
-														<td>Sharma</td>
-														<td>17/05/2016</td>
-														<td>
-															<span class="label label-sm label-danger">unpaid</span>
-														</td>
-														<td>Mechanical</td>
-														<td>
-															<a href="javascript:void(0)" class="tblEditBtn">
-																<i class="fa fa-pencil"></i>
-															</a>
-															<a href="javascript:void(0)" class="tblDelBtn">
-																<i class="fa fa-trash-o"></i>
-															</a>
-														</td>
-													</tr>
+											<tr>
+												<th>#</th>
+												<?php if($_SESSION['user_type']=='admin'){?>
+													<th>POSTED BY</th>
+												<?php }?>
+												<th>COMPANY</th>
+												<th>POSITION</th>
+												<th>EST REWARD</th>
+												<th>SALARY</th>
+												<th>Processing</th>
+												<th>Job Status</th>
+											</tr>
+										</thead>
+										<tbody>
+										<?php
+										$i=1;
+										if($_SESSION['user_type']=='admin'){
+											$sql=$obj->query("select * from $tbl_jobs where 1=1 order by id desc limit 0,5",$debug=-1);
+										}else if($_SESSION['user_type']=='sales'){
+											$sql=$obj->query("select * from $tbl_jobs where sales_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+										}else if($_SESSION['user_type']=='recruiter'){
+											$sql=$obj->query("select * from $tbl_jobs where job_status not in (1)",$debug=-1);
+										}
+									
+										
+										while($line=$obj->fetchNextObject($sql)){?>
+											<tr class="odd">
+												<td><?php echo $i; ?></td>
+												<?php if($_SESSION['user_type']=='admin'){?>
+													<td><?php echo getField('name',$tbl_users,$line->sales_id); ?></td>
+												<?php }?>
+												<td>
+													    <?php 
+														$clogo= getField('logo',$tbl_company,$line->company_id);
+														if (empty($clogo)) {
+															$clogo='';
+														}  ?>
+														<a href="job-detail.php?id=<?php echo $line->id ?>" class="job-list-img"><img src="upload_images/company/<?php echo $clogo ?>"></a>
+												</td>
+												<td class="company-coloumn">
+													<strong><?php echo $line->position ?></strong><br>
+													<?php echo getField('name',$tbl_company,$line->company_id); ?>	<p><i class="material-icons f-left">place</i><?php echo $line->job_location; ?></p>
+													</td>
+												<td>
+													<span class="label label-sm label-success"><?php echo number_format($line->salary) ?> USD</span></td>
+												<td><?php echo $line->salary ?></td>
+												<td><?php echo totalJobApply($line->id) ?> CV</td>
+												<td>
+												 	<?php if ($line->job_status==1) {
+												 		echo 'Open';
+												 	} else if($line->job_status==2){
+												 		echo 'Processing';
+												 	} else if($line->job_status==3){
+												 		echo 'Closed';
+												 	} else if($line->job_status==4){
+												 		echo 'Hidden';
+												 	} ?>
+												 </td>
+											</tr>
+										   <?php $i++; } ?>										
+										</tbody>
 												</tbody>
 											</table>
 										</div>
@@ -374,6 +167,144 @@ validate_admin();
 							</div>
 						</div>
 					</div>
+				<?php }else if($_SESSION['user_type']=='sales'){ ?>
+
+
+						<div class="row state-overview">
+						<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="target"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Jobs</span>
+										<span class="info-box-number"><?php echo totalJobs(); ?></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="users"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Clients</span>
+										<span class="info-box-number"><?php echo totalClient(); ?></span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="gift"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Referral</span>
+										<span class="info-box-number"><?php echo totalReferral(); ?></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xl-3 col-md-6 col-12">
+								<div class="info-box bg-b-green">
+									<span class="info-box-icon push-bottom"><i data-feather="smile"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">Total Employee</span>
+										<span class="info-box-number"><?php echo totalEmployee(); ?></span>
+									</div>
+								</div>
+							</div>
+					</div>
+					<!-- end widget -->
+					<!-- start new student list -->
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="card  card-box">
+								<div class="card-head">
+									<header>New Job List</header>
+									<div class="tools">
+										<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+										<a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+										<a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+									</div>
+								</div>
+								<div class="card-body ">
+									<div class="table-wrap">
+										<div class="table-responsive">
+											<table class="table display product-overview mb-30">
+												<thead>
+											<tr>
+												<th>#</th>
+												<?php if($_SESSION['user_type']=='admin'){?>
+													<th>POSTED BY</th>
+												<?php }?>
+												<th>COMPANY</th>
+												<th>POSITION</th>
+												<th>EST REWARD</th>
+												<th>SALARY</th>
+												<th>Processing</th>
+												<th>Job Status</th>
+											</tr>
+										</thead>
+										<tbody>
+										<?php
+										$i=1;
+										if($_SESSION['user_type']=='admin'){
+											$sql=$obj->query("select * from $tbl_jobs where 1=1 order by id desc limit 0,5",$debug=-1);
+										}else if($_SESSION['user_type']=='sales'){
+											$sql=$obj->query("select * from $tbl_jobs where sales_id='".$_SESSION['sess_admin_id']."' order by id desc",$debug=-1);
+										}else if($_SESSION['user_type']=='recruiter'){
+											$sql=$obj->query("select * from $tbl_jobs where job_status not in (1) order by id desc",$debug=-1);
+										}
+									
+										
+										while($line=$obj->fetchNextObject($sql)){?>
+											<tr class="odd">
+												<td><?php echo $i; ?></td>
+												<?php if($_SESSION['user_type']=='admin'){?>
+													<td><?php echo getField('name',$tbl_users,$line->sales_id); ?></td>
+												<?php }?>
+												<td>
+													    <?php 
+														$clogo= getField('logo',$tbl_company,$line->company_id);
+														if (empty($clogo)) {
+															$clogo='';
+														}  ?>
+														<a href="job-detail.php?id=<?php echo $line->id ?>" class="job-list-img"><img src="upload_images/company/<?php echo $clogo ?>"></a>
+												</td>
+												<td class="company-coloumn">
+													<strong><?php echo $line->position ?></strong><br>
+													<?php echo getField('name',$tbl_company,$line->company_id); ?>	<p><i class="material-icons f-left">place</i><?php echo $line->job_location; ?></p>
+													</td>
+												<td>
+													<span class="label label-sm label-success"><?php echo number_format($line->salary) ?> USD</span></td>
+												<td><?php echo $line->salary ?></td>
+												<td><?php echo totalJobApply($line->id) ?> CV</td>
+												<td>
+												 	<?php if ($line->job_status==1) {
+												 		echo 'Open';
+												 	} else if($line->job_status==2){
+												 		echo 'Processing';
+												 	} else if($line->job_status==3){
+												 		echo 'Closed';
+												 	} else if($line->job_status==4){
+												 		echo 'Hidden';
+												 	} ?>
+												 </td>
+											</tr>
+										   <?php $i++; } ?>										
+										</tbody>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<?php }else if($_SESSION['user_type']=='recruiter'){ ?>
+				dsdsfsdf
+
+				<?php } ?>	
+
 					<!-- end new student list -->
 				</div>
 			</div>
