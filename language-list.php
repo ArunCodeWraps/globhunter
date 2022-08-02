@@ -30,7 +30,7 @@ validate_admin();
 							<div class=" pull-left">
 								<div class="page-title">Language List</div>
 							</div>
-							<div class="col-md-6"><p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:12px;color:#ff0b0b;margin-right: -60%;"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p></div>
+							<div class="col-md-6" id="msg"><p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:12px;color:#ff0b0b;margin-right: -60%;"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p></div>
 							<ol class="breadcrumb page-breadcrumb pull-right">
 								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
 										href="welcome.php">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
@@ -68,7 +68,7 @@ validate_admin();
 												<td><?php echo $i; ?></td>
 												<td><?php echo $line->name; ?> </td>
 												<td>
-													<select name="orderstatus" onchange="language_status(<?php echo $line->id; ?>,this.value)">
+													<select name="orderstatus" onchange="order_status('tbl_language',<?php echo $line->id; ?>,this.value)">
 													<option value="1" <?php if($line->status==1){?> selected <?php } ?>>Enable</option>
 													<option value="0" <?php if($line->status==0){?> selected <?php } ?>>Disable</option>
 													
@@ -103,10 +103,10 @@ validate_admin();
 <script src="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/pages/table/table_data.js"></script>
 <script>
-    function language_status(id,status){
+    function order_status(table,id,status){
           $.ajax({
             url:"ajax/change-status.php",
-            data:{langid:id,status:status},
+            data:{id:id,status:status,table:table},
             beforeSend:function(){
             },
             success:function(data){

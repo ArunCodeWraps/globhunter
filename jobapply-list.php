@@ -27,7 +27,7 @@ validate_admin();
 					<div class="page-bar">
 						<div class="page-title-breadcrumb">
 							<div class=" pull-left">
-								<div class="page-title">Manage Job Application List</div>
+								<div class="page-title">Manage Job Application <br> <span style="color:#6673fc; font-size: 15px;">For <?php echo getField('job_title',$tbl_jobs,$_REQUEST['jid']) ?></span></div>
 							</div>
 							<div class="col-md-6" id="msg"><p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:12px;color:#ff0b0b;margin-right: -60%;"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p></div>
 							<?php if($_SESSION['user_type']=='recruiter'){?>
@@ -53,39 +53,44 @@ validate_admin();
 										<thead>
 											<tr>
 												<th>#</th>
-												<?php if($_SESSION['user_type']=='admin'){?>
-													<th>Posted By</th>
-												<?php }?>
-												<th>Company</th>
-												<th>Position</th>
-												<th>EST Reward</th>
-												<th>Salary</th>
-												<th>Processing</th>
+												<th>Candidate Name</th>
+												<th>Email</th>
+												<th>Contact</th>
+												<th>Country</th>
+												<th>Status</th>
 												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
 										<?php
 										$i=1;
-										$sql=$obj->query("select * from $tbl_job_application where rec_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+										$sql=$obj->query("select * from $tbl_job_application where rec_id='".$_SESSION['sess_admin_id']."' and job_id=".$_REQUEST['jid']."",$debug=-1);
 									
 										
 										while($line=$obj->fetchNextObject($sql)){?>
 											<tr class="odd">
 												<td><?php echo $i; ?></td>
-												<?php if($_SESSION['user_type']=='admin'){?>
-													<td><?php echo getField('name',$tbl_users,$line->sales_id); ?></td>
-												<?php }?>
-												<td><?php echo getField('name',$tbl_company,$line->company_id); ?></td>
-												<td><?php echo $line->position ?></td>
-												<td><?php echo $line->salary ?></td>
-												<td><?php echo $line->salary ?></td>
-												<td><?php echo "0 CV" ?></td>
+												<td><?php echo $line->candidate_name ?></td>
+												<td><?php echo $line->candidate_email ?></td>
+												<td><?php echo $line->candidate_phone ?></td>
+												<td><?php echo getField('country',$tbl_country,$line->candidate_country_id); ?></td>
+												<td>
+													<select name="jobstatus" onchange="job_status('tbl_job_application',<?php echo $line->id; ?>,this.value)" style="width: 140px;" <?php if($_SESSION['user_type']!='recruiter'){?> disabled="disabled" <?php }?>>
+													<option value="1" <?php if($line->status==1){?> selected <?php } ?>>Yet to process</option>
+													<option value="2" <?php if($line->status==2){?> selected <?php } ?>>Ready to submit</option>
+													<option value="3" <?php if($line->status==3){?> selected <?php } ?>>Under Review</option>
+													<option value="4" <?php if($line->status==4){?> selected <?php } ?>>Interview</option>
+													<option value="5" <?php if($line->status==5){?> selected <?php } ?>>Offers</option>
+													<option value="6" <?php if($line->status==6){?> selected <?php } ?>>Rejected</option>
+													<option value="7" <?php if($line->status==7){?> selected <?php } ?>>Under guarantee,</option>
+													<option value="8" <?php if($line->status==8){?> selected <?php } ?>>Expired</option>
+													</select>
+												</td>
 												  <td>
-													<a href="jobapply-addf.php?id=<?php echo $line->id;?>" class="tblEditBtn">
+													<a href="jobapply-addf.php?jid=<?php echo $_REQUEST['jid']; ?>&id=<?php echo $line->id;?>" class="tblEditBtn">
 													<i class="fa fa-pencil"></i>
 													</a>
-													<a href="jobapply-del.php?id=<?php echo $line->id;?>" title="deletel" class="tblDelBtn">
+													<a href="jobapply-del.php?jid=<?php echo $_REQUEST['jid']; ?>&id=<?php echo $line->id;?>" title="deletel" class="tblDelBtn">
 													<i class="fa fa-trash-o"></i>
 													</a>
 												</td>
@@ -100,50 +105,16 @@ validate_admin();
 				</div>
 			</div>
 		</div>
-
-		<!-- The Modal -->
-		<div class="modal" id="CommitionModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h4 class="modal-title">Set Commition</h4>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
-					<!-- Modal body -->
-					<div class="modal-body mycommitionscls"></div>
-					<!-- Modal footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="page-footer">
 			<?php include("footer.php"); ?>
 		</div>
 	</div>
 </body>
-
-
 <script type="text/javascript">
-	$(".jobpostcommitionadd").click(function(){
-            id = $(this).data("one");
-            $.ajax({
-                url:"ajax/jobpostcommitiondetail.php",
-                type:"POST",
-                data:{id:id},
-                success:function(data)
-                {
-                    $(".mycommitionscls").html(data);
-                }
-            })
-        })
-
-function job_status(id,status){
+function job_status(table,id,status){
       $.ajax({
         url:"ajax/change-status.php",
-        data:{jid:id,status:status},
+        data:{id:id,status:status,table:table},
         beforeSend:function(){
         },
         success:function(data){
@@ -151,8 +122,6 @@ function job_status(id,status){
        }
      });
 }
-
-
 </script>
 <script src="assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap5.min.js"></script>
 <script src="assets/js/pages/table/table_data.js"></script>
