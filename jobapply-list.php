@@ -27,7 +27,7 @@ validate_admin();
 					<div class="page-bar">
 						<div class="page-title-breadcrumb">
 							<div class=" pull-left">
-								<div class="page-title">Job Apply List</div>
+								<div class="page-title">Manage Job Application List</div>
 							</div>
 							<div class="col-md-6" id="msg"><p style="text-align:center"><?php if($_SESSION['sess_msg']){ ?><span class="box-title" style="font-size:12px;color:#ff0b0b;margin-right: -60%;"><strong><?php echo $_SESSION['sess_msg'];$_SESSION['sess_msg']='';?></strong></span> <?php }?></p></div>
 							<?php if($_SESSION['user_type']=='recruiter'){?>
@@ -37,7 +37,7 @@ validate_admin();
 								</li>
 								<li><a class="parent-item"
 										href="job-list.php">Back Job List</a>&nbsp;<i class="fa fa-angle-right"></i></li>
-								<li><a class="parent-item" href="jobapply-addf.php?jid=<?php echo $_REQUEST['jid']; ?>">Add Apply Job</a>&nbsp;<i class="fa fa-plus"></i>
+								<li><a class="parent-item" href="jobapply-addf.php?jid=<?php echo $_REQUEST['jid']; ?>">Add Job Application</a>&nbsp;<i class="fa fa-plus"></i>
 								</li>								
 							</ol>
 							<?php }?>
@@ -67,13 +67,7 @@ validate_admin();
 										<tbody>
 										<?php
 										$i=1;
-										if($_SESSION['user_type']=='admin'){
-											$sql=$obj->query("select * from $tbl_jobs where 1=1",$debug=-1);
-										}else if($_SESSION['user_type']=='sales'){
-											$sql=$obj->query("select * from $tbl_jobs where sales_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
-										}else if($_SESSION['user_type']=='recruiter'){
-											$sql=$obj->query("select * from $tbl_jobs where job_status not in (1)",$debug=-1);
-										}
+										$sql=$obj->query("select * from $tbl_job_application where rec_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
 									
 										
 										while($line=$obj->fetchNextObject($sql)){?>
