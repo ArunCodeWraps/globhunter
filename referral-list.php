@@ -62,9 +62,9 @@ validate_admin();
 										while($line=$obj->fetchNextObject($sql)){?>
 											<tr class="odd">
 												<td><?php echo $i; ?></td>
-												<td><?php echo "Job Title : ".$line->job_title."</br>Code : ".$line->job_code."</br>Salary : ".$line->salary."</br>Location : ".$line->job_location; ?></td>
-												<td><?php echo "Company Name : ".$line->name."</br>Address : ".$line->address."</br>Contact : ".$line->contact."</br><img src='upload_images/company/".$line->logo."' style='height: 10%; width: 40%;'>"; ?></td>
-												<td><?php echo "Name : ".$line->candidate_name."</br>Email : ".$line->candidate_email."</br>Contact : ".$line->candidate_phone ?></td>
+												<td><?php echo "<strong>Job Title </strong>: ".$line->job_title."</br><strong>Code </strong>: ".$line->job_code."</br><strong>Salary</strong> : ".$line->salary."</br><strong>Location </strong>: ".$line->job_location; ?></td>
+												<td><?php echo "<strong>Company Name </strong>: ".$line->name."</br><strong>Address </strong>: ".$line->address."</br><strong>Contact </strong>: ".$line->contact."</br><img src='upload_images/company/".$line->logo."' style='height: 10%; width: 40%;'>"; ?></td>
+												<td><?php echo "<strong>Name </strong>: ".$line->candidate_name."</br><strong>Email : </strong>".$line->candidate_email."</br><strong>Contact : </strong>".$line->candidate_phone ?></td>
 												
 												<td>
 												<select name="jobstatus" onchange="job_status('tbl_job_application',<?php echo $line->id; ?>,this.value)" style="width: 140px;">

@@ -53,13 +53,13 @@
 				<span class="title">Job Board</span>
 			</a>
 		</li>
-		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='clinet-list.php' || basename($_SERVER['SCRIPT_NAME'])=='clinet-addf.php'){?> class="nav-item active" <?php }?>>
-			<a href="clinet-list.php" class="nav-link nav-toggle"> <i data-feather="users"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='client-list.php' || basename($_SERVER['SCRIPT_NAME'])=='client-addf.php'){?> class="nav-item active" <?php }?>>
+			<a href="client-list.php" class="nav-link nav-toggle"> <i data-feather="users"></i>
 				<span class="title">All Client</span>
 			</a>
 		</li>
-		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='admin-clinet-list.php'){?> class="nav-item active" <?php }?>>
-			<a href="admin-clinet-list.php" class="nav-link nav-toggle"> <i data-feather="user"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='admin-client-list.php'){?> class="nav-item active" <?php }?>>
+			<a href="admin-client-list.php" class="nav-link nav-toggle"> <i data-feather="user"></i>
 				<span class="title">My Client</span>
 			</a>
 		</li>
@@ -84,8 +84,8 @@
 			</a>
 		</li>
 		<?php }else if($_SESSION['user_type']=='sales'){?>
-		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='clinet-list.php' || basename($_SERVER['SCRIPT_NAME'])=='clinet-addf.php'){?> class="nav-item active" <?php }?>>
-			<a href="clinet-list.php" class="nav-link nav-toggle"> <i data-feather="user"></i>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='client-list.php' || basename($_SERVER['SCRIPT_NAME'])=='client-addf.php'){?> class="nav-item active" <?php }?>>
+			<a href="client-list.php" class="nav-link nav-toggle"> <i data-feather="user"></i>
 				<span class="title">My Clients</span>
 			</a>
 		</li>

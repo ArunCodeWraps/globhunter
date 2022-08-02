@@ -2,11 +2,9 @@
 session_start();
 include("include/config.php");
 include("include/functions.php"); 
-<<<<<<< HEAD
 validate_admin();
 
-=======
->>>>>>> 05d660b223966a0e699f4f3c218d0fcad8833a36
+
 
 if($_REQUEST['submitForm']=='yes')
 {	
@@ -18,7 +16,7 @@ $position=$obj->escapestring($_POST['position']);
 $fee=$obj->escapestring($_POST['fee']);
 $payment=$obj->escapestring($_POST['payment']);
 $employe_type=$obj->escapestring($_POST['employe_type']);
-$cinfo=$obj->escapestring($_POST['cinfo']);
+$email=$obj->escapestring($_POST['email']);
 $contact=$obj->escapestring($_POST['contact']);
 $address=$obj->escapestring($_POST['address']);
 $note=$obj->escapestring($_POST['note']);
@@ -40,7 +38,7 @@ if( $moved ) {
 	if($_REQUEST['id']=='')
 	{
 
-		$obj->query("insert into $tbl_company set name='$name',cinfo='$cinfo',contact='$contact',address='$address',website='$website',taxid='$taxid',position='$position',fee='$fee',payment='$payment',employe_type='$employe_type',note='$note',user_id='".$_SESSION['sess_admin_id']."',logo='$fileNameNew',status=1 ",$debug=-1);// die;
+		$obj->query("insert into $tbl_company set name='$name',email='$email',contact='$contact',address='$address',website='$website',taxid='$taxid',position='$position',fee='$fee',payment='$payment',employe_type='$employe_type',note='$note',user_id='".$_SESSION['sess_admin_id']."',logo='$fileNameNew',status=1 ",$debug=-1);// die;
 		$_SESSION['sess_msg']='Clinet added sucessfully';  
 	}
 	else
@@ -60,10 +58,10 @@ if( $moved ) {
 			$fileNameNew=$_REQUEST['imagename'];
 		}
 	
-		$obj->query("update $tbl_company set name='$name',cinfo='$cinfo',contact='$contact',address='$address',website='$website',taxid='$taxid',position='$position',fee='$fee',payment='$payment',employe_type='$employe_type',note='$note' where id='".$_REQUEST['id']."'",-1);//die;
+		$obj->query("update $tbl_company set name='$name',email='$email',contact='$contact',address='$address',website='$website',taxid='$taxid',position='$position',fee='$fee',payment='$payment',employe_type='$employe_type',note='$note' where id='".$_REQUEST['id']."'",-1);//die;
 		$_SESSION['sess_msg']='Clinet updated sucessfully';   
 	}
-	header("location:clinet-list.php");
+	header("location:client-list.php");
 	exit();
 }      	      
 if($_REQUEST['id']!='')
@@ -95,13 +93,13 @@ if($_REQUEST['id']!='')
 					<div class="page-bar">
 						<div class="page-title-breadcrumb">
 							<div class=" pull-left">
-								<div class="page-title">Clinet Add</div>
+								<div class="page-title">Client Add</div>
 							</div>
 							<ol class="breadcrumb page-breadcrumb pull-right">
 								<li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
 										href="welcome.php">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
 								</li>
-								<li><a class="parent-item" href="clinet-list.php">Clinet List</a>&nbsp;<i class="fa fa-list"></i>
+								<li><a class="parent-item" href="client-list.php">Clinet List</a>&nbsp;<i class="fa fa-list"></i>
 								</li>
 							</ol>
 						</div>
@@ -184,15 +182,11 @@ if($_REQUEST['id']!='')
 									<div class="col-lg-6 p-t-20">
 										<div
 											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-											<input class="mdl-textfield__input" type="email" id="cinfo" name="cinfo" value="<?php echo $result->cinfo ?>"required>
+											<input class="mdl-textfield__input" type="email" id="email" name="email" value="<?php echo $result->email ?>"required>
 											<label class="mdl-textfield__label"> Email</label>
 											<span class="mdl-textfield__error">Enter Valid Email Address!</span>
 										</div>
 									</div>
-								
-									
-									
-									
 							
 									<div class="col-lg-6 p-t-20">
 										<div
