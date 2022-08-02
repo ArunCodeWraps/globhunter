@@ -574,7 +574,7 @@ function totalJobs()
     }else if($_SESSION['user_type']=='sales'){
       $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_jobs where sales_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
     }else if($_SESSION['user_type']=='recruiter'){
-      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_jobs where job_status not in (1) ",$debug=-1);
+      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_jobs where job_status not in (4) ",$debug=-1);
     }
 
     $result = mysqli_fetch_assoc($sql);
@@ -599,7 +599,16 @@ function totalEmployee()
 
 function totalReferral()
 {
-    $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_job_application as a where 1=1",-1);
+    
+    if($_SESSION['user_type']=='admin'){
+      $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_job_application as a where 1=1",-1);
+    }else if($_SESSION['user_type']=='sales'){
+      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_job_application where rec_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+    }else if($_SESSION['user_type']=='recruiter'){
+      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_job_application where rec_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+    }
+
+    //$sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_job_application as a where 1=1",-1);
     $result = mysqli_fetch_assoc($sql);
     if ($result['total']) {
        return (stripslashes($result['total']));
@@ -610,7 +619,14 @@ function totalReferral()
 
 function totalClient()
 {
-    $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_company as a where 1=1",-1);
+    if($_SESSION['user_type']=='admin'){
+      $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_company as a where 1=1",-1);
+    }else if($_SESSION['user_type']=='sales'){
+      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_company where user_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+    }else if($_SESSION['user_type']=='recruiter'){
+      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_company where user_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+    }  
+
     $result = mysqli_fetch_assoc($sql);
     if ($result['total']) {
        return (stripslashes($result['total']));
