@@ -49,23 +49,22 @@ validate_admin();
 										<thead>
 											<tr>
 												<th>#</th>
-												<th>Job Board</th>
+												<th width="200px;">Job Board</th>
 												<th>Comapny Detail</th>
 												<th>Employee Detail</th>
 												<th>Status</th>
-												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
 										<?php
 										$i=1;
-										$sql=$obj->query("select a.candidate_name,a.candidate_email,a.candidate_phone from $tbl_job_application as a join $tbl_jobs as b on a.job_id=b.id join $tbl_company as c on b.company_id=c.id  where 1=1",$debug=-1);
+										$sql=$obj->query("select a.id,a.candidate_name,a.candidate_email,a.candidate_phone,b.job_title,b.job_code,b.salary,b.job_location,c.name,c.address,c.contact,c.logo from $tbl_job_application as a join $tbl_jobs as b on a.job_id=b.id join $tbl_company as c on b.company_id=c.id  where 1=1",$debug=-1);
 										while($line=$obj->fetchNextObject($sql)){?>
 											<tr class="odd">
 												<td><?php echo $i; ?></td>
-												<td><?php echo  ?></td>
-												<td><?php echo $line->candidate_email ?></td>
-												<td><?php echo $line->candidate_name.$line->candidate_phone ?></td>
+												<td><?php echo "Job Title : ".$line->job_title."</br>Code : ".$line->job_code."</br>Salary : ".$line->salary."</br>Location : ".$line->job_location; ?></td>
+												<td><?php echo "Company Name : ".$line->name."</br>Address : ".$line->address."</br>Contact : ".$line->contact."</br><img src='upload_images/company/".$line->logo."' style='height: 10%; width: 40%;'>"; ?></td>
+												<td><?php echo "Name : ".$line->candidate_name."</br>Email : ".$line->candidate_email."</br>Contact : ".$line->candidate_phone ?></td>
 												
 												<td>
 												<select name="jobstatus" onchange="job_status('tbl_job_application',<?php echo $line->id; ?>,this.value)" style="width: 140px;">
@@ -78,14 +77,6 @@ validate_admin();
 													<option value="7" <?php if($line->status==7){?> selected <?php } ?>>Under guarantee,</option>
 													<option value="8" <?php if($line->status==8){?> selected <?php } ?>>Expired</option>
 												</select>
-												</td>
-												  <td>
-													<a href="jobapply-addf.php?jid=<?php echo $_REQUEST['jid']; ?>&id=<?php echo $line->id;?>" class="tblEditBtn">
-													<i class="fa fa-pencil"></i>
-													</a>
-													<a href="jobapply-del.php?jid=<?php echo $_REQUEST['jid']; ?>&id=<?php echo $line->id;?>" title="deletel" class="tblDelBtn">
-													<i class="fa fa-trash-o"></i>
-													</a>
 												</td>
 											</tr>
 										   <?php $i++; } ?>										
