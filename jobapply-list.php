@@ -58,7 +58,9 @@ validate_admin();
 												<th>Contact</th>
 												<th>Country</th>
 												<th>Status</th>
+												<?php if($_SESSION['user_type']=='admin'){?>
 												<th>Action</th>
+												<?php }?>
 											</tr>
 										</thead>
 										<tbody>
@@ -75,7 +77,7 @@ validate_admin();
 												<td><?php echo $line->candidate_phone ?></td>
 												<td><?php echo getField('country',$tbl_country,$line->candidate_country_id); ?></td>
 												<td>
-													<select name="jobstatus" onchange="job_status('tbl_job_application',<?php echo $line->id; ?>,this.value)" style="width: 140px;" <?php if($_SESSION['user_type']!='recruiter'){?> disabled="disabled" <?php }?>>
+													<select name="jobstatus" onchange="job_status('tbl_job_application',<?php echo $line->id; ?>,this.value)" style="width: 140px;" <?php if($_SESSION['user_type']=='recruiter'){?> disabled="disabled" <?php }?>>
 													<option value="1" <?php if($line->status==1){?> selected <?php } ?>>Yet to process</option>
 													<option value="2" <?php if($line->status==2){?> selected <?php } ?>>Ready to submit</option>
 													<option value="3" <?php if($line->status==3){?> selected <?php } ?>>Under Review</option>
@@ -86,6 +88,7 @@ validate_admin();
 													<option value="8" <?php if($line->status==8){?> selected <?php } ?>>Expired</option>
 													</select>
 												</td>
+												<?php if($_SESSION['user_type']=='admin'){?>
 												  <td>
 													<a href="jobapply-addf.php?jid=<?php echo $_REQUEST['jid']; ?>&id=<?php echo $line->id;?>" class="tblEditBtn">
 													<i class="fa fa-pencil"></i>
@@ -94,6 +97,7 @@ validate_admin();
 													<i class="fa fa-trash-o"></i>
 													</a>
 												</td>
+												<?php }?>
 											</tr>
 										   <?php $i++; } ?>										
 										</tbody>

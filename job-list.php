@@ -60,18 +60,18 @@ validate_admin();
 												<th>SALARY</th>
 												<th>Processing</th>
 												<th>Job Status</th>
-												<th>Action</th>
+												<th width="120px;">Action</th>
 											</tr>
 										</thead>
 										<tbody>
 										<?php
 										$i=1;
 										if($_SESSION['user_type']=='admin'){
-											$sql=$obj->query("select * from $tbl_jobs where 1=1",$debug=-1);
+											$sql=$obj->query("select * from $tbl_jobs where 1=1 and status=1",$debug=-1);
 										}else if($_SESSION['user_type']=='sales'){
-											$sql=$obj->query("select * from $tbl_jobs where sales_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+											$sql=$obj->query("select * from $tbl_jobs where sales_id='".$_SESSION['sess_admin_id']."' and status=1",$debug=-1);
 										}else if($_SESSION['user_type']=='recruiter'){
-											$sql=$obj->query("select * from $tbl_jobs where job_status not in (4)",$debug=-1);
+											$sql=$obj->query("select * from $tbl_jobs where job_status not in (4) and status=1",$debug=-1);
 										}
 									
 										
@@ -119,7 +119,7 @@ validate_admin();
 														</a>
 														<a href="jobapply-list.php?jid=<?php echo $line->id;?>" title="Manage Job Application" class="tblDelBtn">
 															<i class="fa fa-plus-square-o"></i>
-														</a>
+														</a><br><br>
 														<?php
 														if($line->job_status==1){?>
 														<a href="javascript:void(0);" title="deletel" class="tblDelBtn jobpostcommitionadd" data-bs-toggle="modal" data-bs-target="#CommitionModal" data-one="<?php echo $line->id; ?>">

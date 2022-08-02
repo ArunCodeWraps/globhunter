@@ -14,19 +14,21 @@ $job_title=$obj->escapestring($_POST['job_title']);
 $job_description=$obj->escapestring($_POST['job_description']);
 $salary=$obj->escapestring($_POST['salary']);
 $position=$obj->escapestring($_POST['position']);
-$job_land_id=$obj->escapestring($_POST['job_land_id']);
+$job_land_id=implode(',',$_POST['job_land_id']);
 $job_location=$obj->escapestring($_POST['job_location']);
 $view=$obj->escapestring($_POST['view']);
+$job_pioratiry=$obj->escapestring($_POST['job_pioratiry']);
+$no_of_position=$obj->escapestring($_POST['no_of_position']);
 
 
 if($_REQUEST['id']=='')
 {
-	$obj->query("insert into $tbl_jobs set sales_id='".$_SESSION['sess_admin_id']."',company_id='$company_id',job_code='$job_code',job_title='$job_title',job_description='$job_description',salary='$salary',position='$position',job_land_id='$job_land_id',job_location='$job_location',view='$view' ",$debug=-1);//die;
+	$obj->query("insert into $tbl_jobs set sales_id='".$_SESSION['sess_admin_id']."',company_id='$company_id',job_code='$job_code',job_title='$job_title',job_description='$job_description',salary='$salary',position='$position',job_land_id='$job_land_id',job_location='$job_location',view='$view',job_pioratiry='$job_pioratiry',no_of_position='$no_of_position' ",$debug=-1);//die;
 	$_SESSION['sess_msg']='Company added sucessfully';  
 }
 else
 { 
-	$obj->query("update $tbl_jobs set company_id='$company_id',job_code='$job_code',job_title='$job_title',job_description='$job_description',salary='$salary',position='$position',job_land_id='$job_land_id',job_location='$job_location',view='$view' where id=".$_REQUEST['id']);
+	$obj->query("update $tbl_jobs set company_id='$company_id',job_code='$job_code',job_title='$job_title',job_description='$job_description',salary='$salary',position='$position',job_land_id='$job_land_id',job_location='$job_location',view='$view',job_pioratiry='$job_pioratiry',no_of_position='$no_of_position' where id=".$_REQUEST['id']);
 	$_SESSION['sess_msg']='Company updated sucessfully';   
 }
 	header("location:job-list.php");
@@ -97,7 +99,11 @@ if($_REQUEST['id']!='')
 											<select class="mdl-textfield__input"  name="company_id"  id="company_id" >
 												<option value="">Select Company</option>
 												<?php
+												if($_SESSION['user_type']=='admin'){
 												$cSql = $obj->query("select id,name from $tbl_company where status=1");
+												}else{
+												$cSql = $obj->query("select id,name from $tbl_company where user_id='".$_SESSION['sess_admin_id']."' and status=1");
+												}
 												while($cResult = $obj->fetchNextObject($cSql)){?>
 													<option value="<?php echo $cResult->id; ?>" <?php if($cResult->id==$result->company_id){?> selected <?php } ?>><?php echo $cResult->name; ?></option>
 												<?php }?>
@@ -125,39 +131,61 @@ if($_REQUEST['id']!='')
 											<label class="mdl-textfield__label">Job Description</label>
 										</div>
 									</div>
-										<div class="col-lg-6 p-t-20">
+										<div class="col-lg-4 p-t-20">
 										<div
 											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 											<input class="mdl-textfield__input" type="text" id="salary" name="salary" value="<?php echo $result->salary ?>" required>
 											<label class="mdl-textfield__label">Salary($)</label>
 										</div>
 									</div>
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-4 p-t-20">
 										<div
 											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 											<input class="mdl-textfield__input" type="text" id="position" name="position" value="<?php echo $result->position ?>" required>
 											<label class="mdl-textfield__label">Position</label>
 										</div>
 									</div>
+
+									<div class="col-lg-4 p-t-20">
+										<div
+											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+
+											<select class="mdl-textfield__input"  name="job_pioratiry"  id="job_pioratiry" >							
+											<option value="">Job Pioratiry</option>
+												<option value="1" selected>Normal</option>
+												<option value="2">Urgent</option>
+											</select>
+										</div>
+									</div>
 												<div class="col-lg-6 p-t-20">
 									<div
 									class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
-									<select class="form-control select2"  name="job_land_id"  id="job_land_id" multiple>							
+									<select class="form-control select2"  name="job_land_id[]"  id="job_land_id" multiple>							
 											<option value="">Select Language</option>
 												<?php
+												$lanArr = explode(',',$result->job_land_id);
 												$lSql = $obj->query("select id,name from $tbl_language where status=1");
 												while($lResult = $obj->fetchNextObject($lSql)){?>
-													<option value="<?php echo $lResult->id; ?>" <?php if($lResult->id==$result->job_land_id){?> selected <?php } ?>><?php echo $lResult->name; ?></option>
+													<option value="<?php echo $lResult->id; ?>" <?php if(in_array($lResult->id,$lanArr)){?> selected <?php } ?>><?php echo $lResult->name; ?></option>
 												<?php }?>
 									</select>
 									</div>
 									</div>
 									
-									<div class="col-lg-6 p-t-20">
+									<div class="col-lg-3 p-t-20">
 										<div
 											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
 											<input class="mdl-textfield__input" type="text" id="job_location" name="job_location" value="<?php echo $result->job_location ?>"required>
 											<label class="mdl-textfield__label"> Job Location</label>
+										</div>
+									</div>
+
+
+									<div class="col-lg-3 p-t-20">
+										<div
+											class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+											<input class="mdl-textfield__input" type="text" id="no_of_position" name="no_of_position" value="<?php echo $result->no_of_position ?>"required>
+											<label class="mdl-textfield__label"> No of Required Candidate</label>
 										</div>
 									</div>
 									

@@ -11,7 +11,7 @@ $jid =$_REQUEST['jid'];
 	if($id!='')
 	{	
 	   
-	    $sql="delete from $tbl_jobs where id='$id'"; 
+	    $sql="update $tbl_jobs set status=0 where id='$id'"; 
 		$obj->query($sql);
 		$sess_msg='Selected record(s) deleted successfully';
 		$_SESSION['sess_msg']=$sess_msg;

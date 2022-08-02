@@ -120,9 +120,9 @@
 				<span class="title">My Profile</span>
 			</a>
 		</li>
-		<li class="nav-item">
-			<a href="javascript:void(0)" class="nav-link nav-toggle"> <i data-feather="gift"></i>
-				<span class="title">My Referral History</span>
+		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='referral-list.php'){?> class="nav-item active" <?php }?>>
+			<a href="referral-list.php" class="nav-link nav-toggle"> <i data-feather="gift"></i>
+				<span class="title">Referral History</span>
 			</a>
 		</li>
 		<li <?php if(basename($_SERVER['SCRIPT_NAME'])=='terms-view.php'){?> class="nav-item active" <?php }?>>
