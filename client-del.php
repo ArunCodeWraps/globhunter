@@ -14,14 +14,14 @@ $ids =$_REQUEST['ids'];
 		$obj->query($sql);
 		$sess_msg='Selected record(s) deleted successfully';
 		$_SESSION['sess_msg']=$sess_msg;
-		header("location: clinet-list.php");
+		header("location: client-list.php");
 	exit();
     }else{
     	  $sql="delete from $tbl_company where id='$ids'"; 
 		$obj->query($sql);
 		$sess_msg='Selected record(s) deleted successfully';
 		$_SESSION['sess_msg']=$sess_msg;
-		header("location: admin-clinet-list.php");
+		header("location: admin-client-list.php");
 	exit();
     }
 	
