@@ -62,9 +62,8 @@ validate_admin();
 										<tbody>
 										<?php
 										$i=1;
-									
-										$sql=$obj->query("select * from $tbl_company where 1=1",$debug=-1);
-									
+										$sql=$obj->query("select * from $tbl_company where user_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+		
 										
 										while($line=$obj->fetchNextObject($sql)){?>
 											<tr class="odd">
