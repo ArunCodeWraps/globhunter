@@ -98,7 +98,7 @@ validate_admin();
 												<td><?php echo $line->salary ?></td>
 												<td><?php echo totalJobApply($line->id) ?> CV</td>
 												<td>
-												 	<select name="jobstatus" onchange="job_status(<?php echo $line->id; ?>,this.value)" style="width: 85px;" <?php if($_SESSION['user_type']!='admin'){?> disabled="disabled" <?php }?>>
+												 	<select name="jobstatus" onchange="job_status(<?php echo $line->id; ?>,this.value)" style="width: 130px;" <?php if($_SESSION['user_type']!='admin'){?> disabled="disabled" <?php }?>>
 													<option value="1" <?php if($line->job_status==1){?> selected <?php } ?>>Open</option>
 													<option value="2" <?php if($line->job_status==2){?> selected <?php } ?>>Processing</option>
 													<option value="3" <?php if($line->job_status==3){?> selected <?php } ?>>Closed</option>
@@ -110,24 +110,29 @@ validate_admin();
 												
 												  <td>
 												  	<?php 
-												  	if($_SESSION['user_type']!='recruiter'){?>
+												  	if($_SESSION['user_type']=='admin' ){?>
 														<a href="job-addf.php?id=<?php echo $line->id;?>" class="tblEditBtn">
 															<i class="fa fa-pencil"></i>
 														</a>
 														<a href="job-del.php?id=<?php echo $line->id;?>" title="deletel" class="tblDelBtn">
 															<i class="fa fa-trash-o"></i>
-														</a><br><br>
-													<?php }else{?>
+														</a>
+														<a href="jobapply-list.php?jid=<?php echo $line->id;?>" title="Manage Job Application" class="tblDelBtn">
+															<i class="fa fa-plus-square-o"></i>
+														</a>
+														<?php
+														if($line->job_status==1){?>
+														<a href="javascript:void(0);" title="deletel" class="tblDelBtn jobpostcommitionadd" data-bs-toggle="modal" data-bs-target="#CommitionModal" data-one="<?php echo $line->id; ?>">
+															<span class="label label-info label-mini">Post</span>
+														</a>
+														<?php }?>
+
+													<?php }else if($_SESSION['user_type']=='recruiter'){?>
 														<a href="jobapply-list.php?jid=<?php echo $line->id;?>" title="Manage Job Application" class="tblDelBtn">
 															<i class="fa fa-plus-square-o"></i>
 														</a>
 													<?php }?>
-													<?php
-													if($line->job_status==1){?>
-													<a href="javascript:void(0);" title="deletel" class="tblDelBtn jobpostcommitionadd" data-bs-toggle="modal" data-bs-target="#CommitionModal" data-one="<?php echo $line->id; ?>">
-														<span class="label label-info label-mini">Post</span>
-													</a>
-													<?php }?>
+													
 												</td>
 											</tr>
 										   <?php $i++; } ?>										

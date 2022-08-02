@@ -610,7 +610,14 @@ function totalReferral()
 
 function totalClient()
 {
-    $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_company as a where 1=1",-1);
+    if($_SESSION['user_type']=='admin'){
+      $sql = $GLOBALS['obj']->query("select count(*) as total FROM tbl_company as a where 1=1",-1);
+    }else if($_SESSION['user_type']=='sales'){
+      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_company where user_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+    }else if($_SESSION['user_type']=='recruiter'){
+      $sql=$GLOBALS['obj']->query("select count(*) as total from tbl_company where user_id='".$_SESSION['sess_admin_id']."'",$debug=-1);
+    }  
+
     $result = mysqli_fetch_assoc($sql);
     if ($result['total']) {
        return (stripslashes($result['total']));
